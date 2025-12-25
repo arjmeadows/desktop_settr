@@ -1,6 +1,7 @@
 import os
 from rich.console import Console
 from rich.panel import Panel
+import profiles
 
 os.system("program_name") # To open any program by their name recognized by windows
 #for example
@@ -57,33 +58,16 @@ def main_menu():
     choice = console.input("[bold green]>>> [/bold green]").strip()
     print()
 
-    if "get " in choice:
-        get_user_credentials()
-        collection.manual_game_create(choice)
-        main_menu()
-    if "add " in choice:
-        collection.user_add_game(choice)
+    if "run " in choice:
+        profiles.run_profile()
+    elif "create profile" in choice:
+        profiles.create_profile()
         main_menu()
     elif "remove " in choice:
-        collection.manual_game_remove(choice)
+        profiles.remove_profile()
         main_menu()
-    elif choice == "list":
-        collection.list_games()
-        main_menu()
-    elif "search " in choice:
-        collection.search_collection(choice)    
-        main_menu()
-    elif "export " in choice:
-        export.csv_export(choice)
-        main_menu()
-    elif "import " in choice:
-        export.csv_import(choice)
-        main_menu()
-    elif choice == "twitch":
-        get_user_credentials()
-        main_menu()    
     elif choice == "exit":
-        print("Thank you for using GAME COLLECTR!")
+        print("Thank you for using DESKTOP SETTR!")
         sys.exit
 
     else:
