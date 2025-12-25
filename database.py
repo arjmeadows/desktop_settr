@@ -12,13 +12,9 @@ def create_db():
             app1 TEXT,
             app2 TEXT,
             app3 TEXT,
-            app4 TEXT,
-            app5 TEXT,
-            app6 TEXT,
-            app7 TEXT,        
+            app4 TEXT      
         )
     ''')
-
     connection.commit()
 
 
@@ -35,12 +31,28 @@ def db_read_one(choice: str):
         return result        
 
 
-def store_profile(new_profile: Profile):
+def store_profile(new_profile):
     connection = sqlite3.connect("profiles.db")
     cursor = connection.cursor()
     sql_query = """
-        INSERT INTO profiles (title)
-        VALUES (?)
+        INSERT INTO profils (title, description, app1)
+        VALUES (?,?,?)
         """
-    cursor.execute(sql_query, new_profile)
+    cursor.execute(sql_query, (new_profile.name, new_profile.title, new_profile.app1, new_profile.app1))
     connection.commit()       
+
+
+
+def store_profile_apps(profile_name, app_list):
+    connection = sqlite3.connect("profiles.db")
+    cursor = connection.cursor()
+    
+    for app in app_list:
+         sql_query = """
+         INSERT INTO profiles_list (app_name, app_directory)
+         VALUES (?,?,?)
+    """
+    cursor.execute(sql_query, (app))
+
+
+    # need to get it out the list somehow?

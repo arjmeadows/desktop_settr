@@ -68,7 +68,7 @@ def main_menu():
         main_menu()
     elif choice == "exit":
         print("Thank you for using DESKTOP SETTR!")
-        sys.exit
+        os.sys.exit
 
     else:
         print("That is not a valid request.")
