@@ -1,5 +1,5 @@
 import sqlite3
-
+import profiles
 
 def create_db():
     connection = sqlite3.connect('profiles.db')
@@ -33,3 +33,14 @@ def db_read_one(choice: str):
         result = cursor.fetchone()
 
         return result        
+
+
+def store_profile(new_profile: Profile):
+    connection = sqlite3.connect("profiles.db")
+    cursor = connection.cursor()
+    sql_query = """
+        INSERT INTO profiles (title)
+        VALUES (?)
+        """
+    cursor.execute(sql_query, new_profile)
+    connection.commit()       
