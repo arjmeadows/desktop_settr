@@ -37,11 +37,6 @@ class Profile:
     # needs a loop that iterates through - object probably needs to store number of apps it adds somewhere, use list len.
     # os.subprocess.run(["open", profile.]) #this needs to look in the dictionary/object for the corresponding value. objects seem cleaner?
         
-
-
-                
-
-
  # path = "/Users/adammeadows/game_app_git/dist/GAME COLLECTR"
 
 # This is the macOS equivalent of os.startfile
