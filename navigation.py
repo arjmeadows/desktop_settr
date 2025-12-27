@@ -55,12 +55,12 @@ def main_menu():
     print()
 
     if "run " in choice:
-        profiles.run_profile()
+        profiles.Profile.run_profile(choice)
     elif "create profile" in choice:
-        profiles.create_profile()
+        profiles.Profile.create_profile()
         main_menu()
     elif "remove " in choice:
-        profiles.remove_profile()
+        profiles.Profile.remove_profile()
         main_menu()
     elif choice == "exit":
         print("Thank you for using DESKTOP SETTR!")

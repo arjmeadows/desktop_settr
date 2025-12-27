@@ -42,16 +42,11 @@ class Profile:
         connection.row_factory = sqlite3.Row
         cursor = connection.cursor()
         sql_insert_query = """
-            SELECT filepath FROM app_list WHERE title=?;
+            SELECT filepath FROM app_list WHERE profile_name=?;
                             """
         cursor.execute(sql_insert_query, (profile_name,))
         result = cursor.fetchone()
         print(result)
-
-
-
-        
-
 
 # def run_profile(profile: Profile):
     # needs a loop that iterates through - object probably needs to store number of apps it adds somewhere, use list len.
