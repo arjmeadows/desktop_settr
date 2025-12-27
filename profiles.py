@@ -35,6 +35,24 @@ class Profile:
         database.store_profile_apps(new_profile)
         # database.store_profile(new_profile)
 
+
+    def run_profile(profile_name: str): # row here somewhere, or something like that
+
+        connection = sqlite3.connect('profiles.db')
+        connection.row_factory = sqlite3.Row
+        cursor = connection.cursor()
+        sql_insert_query = """
+            SELECT filepath FROM app_list WHERE title=?;
+                            """
+        cursor.execute(sql_insert_query, (profile_name,))
+        result = cursor.fetchone()
+        print(result)
+
+
+
+        
+
+
 # def run_profile(profile: Profile):
     # needs a loop that iterates through - object probably needs to store number of apps it adds somewhere, use list len.
     # os.subprocess.run(["open", profile.]) #this needs to look in the dictionary/object for the corresponding value. objects seem cleaner?

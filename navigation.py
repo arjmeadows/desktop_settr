@@ -39,22 +39,18 @@ def main_menu():
     console = Console()
 
     menu_content = (
-        "[bold cyan]get[/bold cyan] [italic white]<title>[/italic white] | "
-        "[bold cyan]add[/bold cyan] [italic white]<title>[/italic white] | "
-        "[bold red]remove[/bold red] [italic white]<title>[/italic white] | "
-        "[bold green]list[/bold green] | "
-        "[bold blue]search[/bold blue] [italic white]<term>[/italic white] | "
-        "[bold purple]export (CSV)[/bold purple] [italic white]<filename>[/italic white] | "
-        "[bold yellow]import (CSV)[/bold yellow] [italic white]<filename.csv>[/italic white] | "
-        "[bold white]exit[/bold white]\n"
-        "──────────────────────────────────────────────────────────────────────────────────────────\n"
-        "[dim]Examples:[/dim]  [bold blue]search[/bold blue] [white]Halo 2[/white]  •  "
-        "[bold cyan]add[/bold cyan] [white]Halo 2[/white]  •  "
-        "[bold purple]export[/bold purple] [white]games[/white]  •  "
-        "[bold yellow]import[/bold yellow] [white]games.csv[/white]"
-    )
+            "[bold cyan]run[/bold cyan] [italic white]<profile>[/italic white] | "
+            "[bold cyan]create profile[/bold cyan] | "
+            "[bold red]remove[/bold red] [italic white]<profile>[/italic white] | "
+            "[bold white]exit[/bold white]\n"
+            "──────────────────────────────────────────────────────────────────────────────────────────\n"
+            "[dim]Examples:[/dim]  [bold cyan]run[/bold cyan] [white]Gaming[/white]  •  "
+            "[bold cyan]create profile[/bold cyan]  •  "
+            "[bold red]remove[/bold red] [white]Work[/white]"
+        )
 
-    console.print(Panel(menu_content, title="GAME COLLECTR MENU", expand=False))
+    # Change title to match the "SETTR" branding in your exit message
+    console.print(Panel(menu_content, title="DESKTOP SETTR MENU", expand=False))
     choice = console.input("[bold green]>>> [/bold green]").strip()
     print()
 
@@ -69,7 +65,6 @@ def main_menu():
     elif choice == "exit":
         print("Thank you for using DESKTOP SETTR!")
         os.sys.exit
-
     else:
         print("That is not a valid request.")
         print()
