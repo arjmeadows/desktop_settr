@@ -9,5 +9,5 @@ import navigation
 
 database.create_profile_list_db()
 database.create_app_list_db()
-navigation.print_logo()
+# navigation.print_logo()
 profiles.Profile.create_profile()

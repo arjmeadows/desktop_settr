@@ -50,29 +50,20 @@ def store_profile(new_profile):
     connection.commit()       
 
 # this includes 
-def store_profile_apps(profile_name, app_list):
+def store_profile_apps(new_profile):
     connection = sqlite3.connect("profiles.db")
     cursor = connection.cursor()
     
-    for app in app_list:
+    for app in new_profile.app_list:
          sql_query = """
-         INSERT INTO profiles_list (app_name, app_directory)
+         INSERT INTO app_list (app_name, filepath)
          VALUES (?,?)
     """
-    cursor.execute(sql_query, (app_list[0], app_list[1]))
+    cursor.execute(sql_query, (app[0], app[1]))
+    print(new_profile.app_list[0][0])
 
 
-    # need to get it out the list somehow?
-# = [ ( 1, 2), (3, 4), (5, 6) ]
-#
-# info[0][0] == 1
-# info[0][1] == 2
-# info[1][0] == 3
-# info[1][1] == 4
-# info[2][0] == 5
-# info[2][1] == 6
-# info = [ ( 1, 2), (3, 4), (5, 6) ]
 
-    # user enters info, which creates an object
-    # object is passed into database
-    # user is asked to    
+ print(new_profile.app_list[0][0])
+
+this works, but nothing seems to be writing to the table
