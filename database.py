@@ -51,19 +51,16 @@ def store_profile(new_profile):
 
 # this includes 
 def store_profile_apps(new_profile):
-    connection = sqlite3.connect("profiles.db")
+    connection = sqlite3.connect('profiles.db')
     cursor = connection.cursor()
-    
     for app in new_profile.app_list:
-         sql_query = """
-         INSERT INTO app_list (app_name, filepath)
-         VALUES (?,?)
-    """
-    cursor.execute(sql_query, (app[0], app[1]))
-    print(new_profile.app_list[0][0])
+        sql_query = """
+        INSERT INTO app_list (profile_name, app_name, filepath)
+        VALUES (?,?,?)
+        """
+        cursor.execute(sql_query, (new_profile.name, app[0][0:], app[0][1:]))
+        print(app[0][0:])
+        print(app[0][0:])
+        connection.commit()       
 
 
-
- print(new_profile.app_list[0][0])
-
-this works, but nothing seems to be writing to the table
