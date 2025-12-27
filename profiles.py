@@ -33,26 +33,21 @@ class Profile:
         print(self.app_list)
         # function here that passes it to the other database table
         database.store_profile_apps(new_profile)
-        # database.store_profile(new_profile)
+        database.store_profile(new_profile)
 
 
-    def run_profile(profile_name: str): # row here somewhere, or something like that
-
+    def run_profile(choice):
+        prof_name = choice[4:]
         connection = sqlite3.connect('profiles.db')
         connection.row_factory = sqlite3.Row
         cursor = connection.cursor()
         sql_insert_query = """
-            SELECT filepath FROM app_list WHERE profile_name=?;
+            SELECT * FROM app_list WHERE profile_name=?
                             """
-        cursor.execute(sql_insert_query, (profile_name,))
-        result = cursor.fetchone()
-        print(result)
-
-# def run_profile(profile: Profile):
-    # needs a loop that iterates through - object probably needs to store number of apps it adds somewhere, use list len.
-    # os.subprocess.run(["open", profile.]) #this needs to look in the dictionary/object for the corresponding value. objects seem cleaner?
+        cursor.execute(sql_insert_query, (prof_name,))
+        result = cursor.fetchall()
+        connection.commit
         
- # path = "/Users/adammeadows/game_app_git/dist/GAME COLLECTR"
-
-# This is the macOS equivalent of os.startfile
-# subprocess.run(["open", path])           
+        for row in result:
+            print(row['filepath'])
+            
