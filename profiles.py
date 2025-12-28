@@ -36,6 +36,10 @@ class Profile:
         database.store_profile(new_profile)
 
 
+    def open_app(app_name: str):
+        os.startfile(app_name)
+            
+
     def run_profile(choice):
         prof_name = choice[4:]
         connection = sqlite3.connect('profiles.db')
@@ -47,7 +51,11 @@ class Profile:
         cursor.execute(sql_insert_query, (prof_name,))
         result = cursor.fetchall()
         connection.commit
-        
+
+        open_app(row['filepath'])
+
+
         for row in result:
+            # function here
             print(row['filepath'])
-            
+
