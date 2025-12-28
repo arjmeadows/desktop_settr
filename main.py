@@ -9,7 +9,6 @@ import navigation
 database.create_profile_list_db()
 database.create_app_list_db()
 # navigation.print_logo()
-navigation.main_menu()
 # profiles.Profile.create_profile()
 
 # need to look to ask them about/create profile
