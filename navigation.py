@@ -1,6 +1,7 @@
 import os
 from rich.console import Console
 from rich.panel import Panel
+from rich.table import Table
 import profs
 import navigation
 
@@ -76,3 +77,10 @@ def main_menu():
         main_menu()
 
 
+def profile_table(): # whatever calls this needs to tap into the other table, and then some how loop through the apps - not sure what the best was to present this is
+    table = Table(show_header=True, show_lines=True, header_style="bold magenta")
+    table.add_column("Profile name", style="bold", width=12)
+    table.add_column("Description")
+    table.add_column("App name", justify="left")
+    table.add_column("App file path", justify="left")
+    return table
