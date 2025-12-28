@@ -1,7 +1,7 @@
 import os
 from rich.console import Console
 from rich.panel import Panel
-import profiles
+import profs
 
 os.system("program_name") # To open any program by their name recognized by windows
 #for example
@@ -55,12 +55,12 @@ def main_menu():
     print()
 
     if "run " in choice:
-        profiles.Profile.run_profile(choice)
+        profs.Profile.run_profile(choice)
     elif "create profile" in choice:
-        profiles.Profile.create_profile()
+        profs.Profile.create_profile()
         main_menu()
     elif "remove " in choice:
-        profiles.Profile.remove_profile()
+        profs.Profile.remove_profile()
         main_menu()
     elif choice == "exit":
         print("Thank you for using DESKTOP SETTR!")

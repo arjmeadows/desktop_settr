@@ -1,6 +1,10 @@
 import os
 import sqlite3
+import subprocess
 import database
+
+def open_app(app_name: str): # one of these functions needs to detect the OS
+    subprocess.call(['open', app_name])
 
 class Profile:
     def __init__(self, name: str, description: str, app_list: list):
@@ -36,12 +40,9 @@ class Profile:
         database.store_profile(new_profile)
 
 
-    def open_app(app_name: str):
-        os.startfile(app_name)
-            
-
     def run_profile(choice):
         prof_name = choice[4:]
+        print(prof_name)
         connection = sqlite3.connect('profiles.db')
         connection.row_factory = sqlite3.Row
         cursor = connection.cursor()
@@ -51,11 +52,9 @@ class Profile:
         cursor.execute(sql_insert_query, (prof_name,))
         result = cursor.fetchall()
         connection.commit
-
-        open_app(row['filepath'])
-
-
+        
         for row in result:
             # function here
             print(row['filepath'])
+            open_app(row['filepath'])
 

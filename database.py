@@ -1,5 +1,5 @@
 import sqlite3
-import profiles
+import profs
 
 def create_profile_list_db():
     connection = sqlite3.connect('profiles.db')
@@ -58,7 +58,7 @@ def store_profile_apps(new_profile):
         INSERT INTO app_list (profile_name, app_name, filepath)
         VALUES (?,?,?)
         """
-        cursor.execute(sql_query, (new_profile.name, app[0][0:], app[0][1:]))
+        cursor.execute(sql_query, (new_profile.name, app[0][0:], app[1][0:]))
         print(app[0][0:])
         print(app[0][0:])
         connection.commit()       

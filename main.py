@@ -1,7 +1,7 @@
 import os
 import subprocess
 import pathlib
-import profiles
+import profs
 import database
 import navigation
 
@@ -13,3 +13,5 @@ navigation.main_menu()
 # profiles.Profile.create_profile()
 
 # need to look to ask them about/create profile
+
+# /Users/adammeadows/game_app_git/dist
