@@ -69,7 +69,7 @@ def main_menu():
     elif "show " in choice:
         profs.show_profile(choice)
         main_menu()    
-    elif choice == "list profiles":
+    elif choice == "list":
         profs.list_profiles()
         main_menu()
     elif choice == "exit":

@@ -97,14 +97,15 @@ def list_profiles():
      # how does tis
     for row in result:
         table.add_row(*(str(item) for item in row))
-        print(str(list_apps(row["name"])))
+
+        for row in list_apps(row[0]): # need to get this into the table columns somehow.
+            print(row[1])
+            print(row[2])
 
     console = Console()
     console.print(table)
 
 
-
-# run this for each loop, then pass it back to the function to insert the information into the table. Do we need to decide a cap on number of apps per profile?
 def list_apps(row_profile_name):
     connection = sqlite3.connect('profiles.db')
     connection.row_factory = sqlite3.Row
@@ -116,7 +117,4 @@ def list_apps(row_profile_name):
     result = cursor.fetchall()
     connection.commit()
 
-    for row in result:
-        print(row[1])
-
-    #  result[0]("filepath")
+    return result
