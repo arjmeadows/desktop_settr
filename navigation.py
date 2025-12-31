@@ -41,15 +41,16 @@ def main_menu():
     console = Console()
 
     menu_content = (
-            "[bold cyan]run[/bold cyan] [italic white]<profile>[/italic white] | "
-            "[bold cyan]create profile[/bold cyan] | "
-            "[bold red]remove[/bold red] [italic white]<profile>[/italic white] | "
-            "[bold white]exit[/bold white]\n"
-            "──────────────────────────────────────────────────────────────────────────────────────────\n"
-            "[dim]Examples:[/dim]  [bold cyan]run[/bold cyan] [white]Gaming[/white]  •  "
-            "[bold cyan]create profile[/bold cyan]  •  "
-            "[bold red]remove[/bold red] [white]Work[/white]"
-        )
+        "[bold cyan]run[/bold cyan] [italic white]<profile>[/italic white] | "
+        "[bold cyan]create profile[/bold cyan] | "
+        "[bold cyan]list profiles[/bold cyan] | "
+        "[bold red]remove[/bold red] [italic white]<profile>[/italic white] | "
+        "[bold white]exit[/bold white]\n"
+        "──────────────────────────────────────────────────────────────────────────────────────────\n"
+        "[dim]Examples:[/dim]  [bold cyan]run[/bold cyan] [white]Gaming[/white]  •  "
+        "[bold cyan]list profiles[/bold cyan]  •  "
+        "[bold red]remove[/bold red] [white]Work[/white]"
+    )
 
     # Change title to match the "SETTR" branding in your exit message
     console.print(Panel(menu_content, title="DESKTOP SETTR MENU", expand=False))
@@ -68,6 +69,9 @@ def main_menu():
     elif "show " in choice:
         profs.show_profile(choice)
         main_menu()    
+    elif choice == "list profiles":
+        profs.list_profiles()
+        main_menu()
     elif choice == "exit":
         print("Thank you for using DESKTOP SETTR!")
         os.sys.exit
@@ -77,7 +81,7 @@ def main_menu():
         main_menu()
 
 
-def profile_table(): # whatever calls this needs to tap into the other table, and then some how loop through the apps - not sure what the best was to present this is
+def profile_table():
     table = Table(show_header=True, show_lines=True, header_style="bold magenta")
     table.add_column("Profile name", style="bold", width=12)
     table.add_column("Description")

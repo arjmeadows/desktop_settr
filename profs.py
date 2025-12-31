@@ -2,6 +2,10 @@ import os
 import sqlite3
 import subprocess
 import database
+import navigation
+from rich.console import Console
+from rich.panel import Panel
+from rich.table import Table
 
 def open_app(app_name: str): # one of these functions needs to detect the OS
     subprocess.call(['open', app_name])
@@ -79,3 +83,20 @@ def show_profile(choice):
         print(row['filepath'])
 
 
+def list_profiles():
+    connection = sqlite3.connect('profiles.db')
+    connection.row_factory = sqlite3.Row
+    cursor = connection.cursor()
+    sql_insert_query = """
+        SELECT * FROM profiles
+                        """
+    cursor.execute(sql_insert_query)
+    result = cursor.fetchall()
+    connection.commit 
+    table = navigation.profile_table()
+    
+    for row in result:
+        table.add_row(*(str(item) for item in row))
+
+    console = Console()
+    console.print(table)
