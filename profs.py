@@ -100,7 +100,7 @@ def list_profiles():
 
         for row in list_apps(row[0]): # need to get this into the table columns somehow.
             print(row[1])
-            print(row[2])
+            print(row[2])    
 
     console = Console()
     console.print(table)
