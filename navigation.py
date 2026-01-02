@@ -60,6 +60,9 @@ def main_menu():
     if "run " in choice:
         profs.run_profile(choice)
         main_menu()
+    if "close " in choice:
+        profs.close_profile(choice)
+        main_menu()
     elif "create profile" in choice:
         profs.Profile.create_profile()
         main_menu()

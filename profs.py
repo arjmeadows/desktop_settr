@@ -7,8 +7,12 @@ from rich.console import Console
 from rich.panel import Panel
 from rich.table import Table
 
-def open_app(app_name: str): # one of these functions needs to detect the OS
-    subprocess.call(['open', app_name])
+def open_app(app_path: str): # one of these functions needs to detect the OS
+    subprocess.call(['open', app_path])
+
+def close_app(app_path: str): # one of these functions needs to detect the OS
+    im_name = os.path.basename(app_path)
+    subprocess.run(["taskkill", "/IM", im_name])   
 
 class Profile:
     def __init__(self, name: str, description: str, app_list: list):
@@ -118,3 +122,20 @@ def list_apps(row_profile_name):
     connection.commit()
 
     return result
+
+def close_profile(choice):
+    prof_name = choice[6:]
+    print(prof_name)
+    connection = sqlite3.connect('profiles.db')
+    connection.row_factory = sqlite3.Row
+    cursor = connection.cursor()
+    sql_insert_query = """
+        SELECT * FROM app_list WHERE profile_name=?
+                        """
+    cursor.execute(sql_insert_query, (prof_name,))
+    result = cursor.fetchall()
+    connection.commit
+    
+    for row in result:
+        # function here
+        close_app(row['filepath'])
