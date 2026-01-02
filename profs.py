@@ -12,7 +12,11 @@ def open_app(app_path: str): # one of these functions needs to detect the OS
 
 def close_app(app_path: str): # one of these functions needs to detect the OS
     im_name = os.path.basename(app_path)
-    subprocess.run(["taskkill", "/IM", im_name])   
+    print(im_name)
+    try:
+        subprocess.run(["pkill", "/IM", im_name])
+    except:
+        navigation.main_menu()       
 
 class Profile:
     def __init__(self, name: str, description: str, app_list: list):

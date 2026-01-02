@@ -43,13 +43,10 @@ def main_menu():
     menu_content = (
         "[bold cyan]run[/bold cyan] [italic white]<profile>[/italic white] | "
         "[bold cyan]create profile[/bold cyan] | "
-        "[bold cyan]list profiles[/bold cyan] | "
+        "[bold cyan]close profile[/bold cyan] | "
         "[bold red]remove[/bold red] [italic white]<profile>[/italic white] | "
-        "[bold white]exit[/bold white]\n"
-        "──────────────────────────────────────────────────────────────────────────────────────────\n"
-        "[dim]Examples:[/dim]  [bold cyan]run[/bold cyan] [white]Gaming[/white]  •  "
-        "[bold cyan]list profiles[/bold cyan]  •  "
-        "[bold red]remove[/bold red] [white]Work[/white]"
+        "[bold red]remove[/bold red] [italic white]<profile>[/italic white] | "
+        "[bold white]exit[/bold white]"
     )
 
     # Change title to match the "SETTR" branding in your exit message
