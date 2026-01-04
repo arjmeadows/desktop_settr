@@ -7,6 +7,8 @@ from rich.console import Console
 from rich.panel import Panel
 from rich.table import Table
 
+# how to search apps and file paths
+
 def open_app(app_path: str): # one of these functions needs to detect the OS
     subprocess.call(['open', app_path])
 
