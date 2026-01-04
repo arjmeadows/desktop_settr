@@ -44,7 +44,7 @@ def main_menu():
         "[bold cyan]run[/bold cyan] [italic white]<profile>[/italic white] | "
         "[bold cyan]create profile[/bold cyan] | "
         "[bold cyan]close profile[/bold cyan] | "
-        "[bold red]remove[/bold red] [italic white]<profile>[/italic white] | "
+        "[italic white]list[/italic white] | "
         "[bold red]remove[/bold red] [italic white]<profile>[/italic white] | "
         "[bold white]exit[/bold white]"
     )
@@ -64,7 +64,7 @@ def main_menu():
         profs.Profile.create_profile()
         main_menu()
     elif "remove " in choice:
-        profs.remove_profile()
+        profs.Profile.remove_profile(choice)
         main_menu()
     elif "show " in choice:
         profs.show_profile(choice)

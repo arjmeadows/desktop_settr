@@ -54,6 +54,17 @@ class Profile:
         database.store_profile(new_profile)
 
 
+    def remove_profile(choice): # needs to delete in both tables
+        prof_name = choice[7:]
+        connection = sqlite3.connect('profiles.db')
+        cursor = connection.cursor()
+        sql_delete_query = """
+            DELETE FROM profiles WHERE name=?
+                            """
+        cursor.execute(sql_delete_query, (prof_name,))
+        connection.commit
+
+
 def run_profile(choice):
     prof_name = choice[4:]
     print(prof_name)
