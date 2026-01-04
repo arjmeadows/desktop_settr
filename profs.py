@@ -20,6 +20,7 @@ def close_app(app_path: str): # one of these functions needs to detect the OS
     except:
         navigation.main_menu()       
 
+
 class Profile:
     def __init__(self, name: str, description: str, app_list: list):
         self.name = name
@@ -40,7 +41,6 @@ class Profile:
         tracker = 1
 
         while tracker <= max_apps_per_profile:
-
             app_name = input(f"App name{tracker}: ")
             app_file_path = input(f"Filepath{tracker}: ")
             app_tuple = (app_name, app_file_path)
@@ -63,6 +63,21 @@ class Profile:
                             """
         cursor.execute(sql_delete_query, (prof_name,))
         connection.commit
+
+    def remove_app_list(choice):      
+        prof_name = choice[7:]
+        connection = sqlite3.connect('profiles.db')
+        cursor = connection.cursor()
+        sql_delete_query = """
+            DELETE FROM app_list WHERE name=?
+                            """
+        cursor.execute(sql_delete_query, (prof_name,))
+        connection.commit
+
+
+def delete_profile_all(choice):
+    Profile.remove_profile(choice)
+    Profile.remove_app_list(choice)    
 
 
 def run_profile(choice):
